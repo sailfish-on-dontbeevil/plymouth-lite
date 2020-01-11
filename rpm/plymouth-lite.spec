@@ -11,7 +11,7 @@ Source1:    %{name}-start.service
 Source2:    %{name}-halt.service
 Source3:    %{name}-reboot.service
 Source4:    %{name}-poweroff.service
-Requires:   boot-splash-screen
+Source5:    default.conf
 Requires:   systemd
 Requires(preun): systemd
 Requires(post): systemd
@@ -67,6 +67,7 @@ install -d %{buildroot}/lib/systemd/system/poweroff.target.wants/
 ln -s ../%{name}-poweroff.service %{buildroot}/lib/systemd/system/poweroff.target.wants/%{name}-poweroff.service
 # << install post
 
+install -D -m 644 %{SOURCE5} %{buildroot}/var/lib/environment/plymouth/default.conf
 
 %preun
 if [ "$1" -eq 0 ]; then
@@ -100,3 +101,4 @@ systemctl daemon-reload
 
 %files theme-default
 %{_datadir}/plymouth/splash.png
+/var/lib/environment/plymouth/default.conf
