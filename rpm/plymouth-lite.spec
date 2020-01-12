@@ -1,7 +1,7 @@
 Name:       plymouth-lite
 
 Summary:    Boot splash screen based on Fedora's Plymouth code
-Version:    0.6.1
+Version:    0.7.0
 Release:    2
 Group:      System/Base
 License:    GPLv2
